@@ -1,0 +1,21 @@
+# Cache
+__pycache__
+
+# OS
+.DS_Store
+
+# IDE
+.vscode
+
+# Settings
+.envrc
+
+# DB
+app.db
+
+#Dataset
+merged.csv
+
+# Migrations folders
+migrations/
+migrations2/
