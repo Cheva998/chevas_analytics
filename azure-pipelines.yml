@@ -13,6 +13,7 @@ pool:
 steps:
 - script: echo Hello, world!
   displayName: 'Run a one-line script'
+- script: pip install -r requirements.txt
 
 - task: Bash@3
   inputs:
