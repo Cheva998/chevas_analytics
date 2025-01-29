@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+
+{% block title %}App Page{% endblock %}
+
+{% block content %}
+<h1>Monitor devices</h1>
+<p>You can check the measured variables in this section.</p>
+
+<div class="display">
+	<h1>Temperature: <span id="temperature">--</span>°C</h1>
+</div>
+<div class="display">
+	<h1>Humidity</h1>
+	<input type="range" id="humidity" class="gauge" min="0" max="100" value="50" disabled>
+	<p><span id="humidityValue">50</span>%</p>
+</div>
+<script>
+	// const apiUrl = "192.168.80.17:5000/api/sensor_data";
+	const apiUrl = "api/sensor_data";
+	async function fetchIotData() {
+		try {
+			const tempResponse = await fetch(apiUrl + '?sensor_type=temperature');
+			const humResponse = await fetch(apiUrl + '?sensor_type=humidity');
+			console.log("fetched both");
+
+			const tempData = await tempResponse.json();
+			const humData = await humResponse.json();
+
+			console.log(tempData, humData);
+
+			const temperature = tempData.temperature;
+			const humidity = humData.humidity;
+			document.getElementById('temperature').textContent = temperature;
+			document.getElementById('humidity').value = humidity;
+			document.getElementById('humidityValue').textContent = humidity;
+
+		} catch (error) {
+			console.error('Error fetching data: ', error)
+		}
+	}
+
+	// let temperature = 22; // Example temperature value
+	let humidity = 50; // Example humidity value
+
+	window.onload = fetchIotData;
+</script>
+{% endblock %}
