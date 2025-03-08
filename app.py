@@ -1,17 +1,42 @@
 from flask import Flask, render_template, jsonify, request
-import board
-import adafruit_dht
+from flask_socketio import SocketIO, emit
+#import board
+#import adafruit_dht
 
 pin = 11
-dht = adafruit_dht.DHT11(board.D4, use_pulseio=False)
+#dht = adafruit_dht.DHT11(board.D4, use_pulseio=False)
 
+
+import random
 def get_temperature():
-	return dht.temperature
+	#return dht.temperature
+    return random.randrange(18, 28, 1)
 
 def get_humidity():
-	return dht.humidity
+	#return dht.humidity
+    return random.randrange(20, 70, 2)
 
 app = Flask(__name__)
+
+socketio = SocketIO(app)
+
+# Function to update the 
+def send_updates():
+    while True:
+        temperature = get_temperature()
+        humidity = get_humidity()
+        socketio.emit('value_update', 
+            {
+                'temperature': temperature,
+                'humidity': humidity
+            })
+        socketio.sleep(5)
+
+
+@socketio.on('connect')
+def handle_connect():
+    #Send updates to this client
+    socketio.start_background_task(send_updates)
 
 # Define routes for web pages
 @app.route('/')

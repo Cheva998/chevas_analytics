@@ -11,28 +11,66 @@
 </div>
 <div class="display">
 	<h1>Humidity</h1>
-	<input type="range" id="humidity" class="gauge" min="0" max="100" value="50" disabled>
-	<p><span id="humidityValue">50</span>%</p>
+	<input type="range" id="humidity" class="gauge" min="0" max="100" value="0" disabled>
+	<p><span id="humidityValue">--</span>%</p>
 </div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.0.1/socket.io.js"></script>
 <script>
 	// const apiUrl = "192.168.80.17:5000/api/sensor_data";
 	const apiUrl = "api/sensor_data";
+
+	document.addEventListener('DOMContentLoaded', function() {
+		var socket = io();
+
+		socket.on('value_update', function(data) {
+			
+			document.getElementById('temperature').textContent = data.temperature;
+			document.getElementById('humidity').value = data.humidity;
+			document.getElementById('humidityValue').textContent = data.humidity;
+		})
+	})
+	async function fetchSensorData(sensorType) {
+		try {
+			const response = await fetch(`${apiUrl}?sensor_type=${sensorType}`);
+			if (!response.ok) {
+				throw new Error(`HTTP error from sensor type: ${sensorType}.\
+				Status code: ${response.status}`)
+			}
+			const data = await response.json();
+			return data;
+		} catch (error) {
+			console.error(`Error fetching ${sensorType} data: `, error);
+			return null;
+		}
+	}
+
 	async function fetchIotData() {
 		try {
-			const tempResponse = await fetch(apiUrl + '?sensor_type=temperature');
-			const humResponse = await fetch(apiUrl + '?sensor_type=humidity');
-			console.log("fetched both");
+			// const tempResponse = await fetch(apiUrl + '?sensor_type=temperature');
+			// const tempData = await tempResponse.json();
+			// const temperature = tempData.temperature;
+			// document.getElementById('temperature').textContent = temperature;
+			
 
-			const tempData = await tempResponse.json();
-			const humData = await humResponse.json();
+			// const humResponse = await fetch(apiUrl + '?sensor_type=humidity');
+			// const humData = await humResponse.json();
+			// const humidity = humData.humidity;
+			// document.getElementById('humidity').value = humidity;
+			// document.getElementById('humidityValue').textContent = humidity;
 
-			console.log(tempData, humData);
-
-			const temperature = tempData.temperature;
-			const humidity = humData.humidity;
-			document.getElementById('temperature').textContent = temperature;
-			document.getElementById('humidity').value = humidity;
-			document.getElementById('humidityValue').textContent = humidity;
+			const [tempData, humData] = await Promise.all([
+				fetchSensorData('temperature'),
+				fetchSensorData('humidity')
+			]);
+			
+			if (tempData) {
+				document.getElementById('temperature').textContent = tempData.temperature;
+			}
+			
+			if (humData) {
+				document.getElementById('humidity').value = humData.humidity;
+				document.getElementById('humidityValue').textContent = humData.humidity;
+			}
 
 		} catch (error) {
 			console.error('Error fetching data: ', error)
@@ -42,6 +80,6 @@
 	// let temperature = 22; // Example temperature value
 	let humidity = 50; // Example humidity value
 
-	window.onload = fetchIotData;
+	//window.onload = fetchIotData;
 </script>
 {% endblock %}
