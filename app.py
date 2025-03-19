@@ -36,6 +36,7 @@ def send_updates():
 @socketio.on('connect')
 def handle_connect():
     #Send updates to this client
+    print('start sending sensor data')
     socketio.start_background_task(send_updates)
 
 # Define routes for web pages
@@ -68,4 +69,4 @@ def create_data():
     return jsonify({'message': 'Data created successfully!', 'data': data})
 
 if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=5000, debug=True)
+    socketio.run(app, host='0.0.0.0', port=5000, debug=True)
