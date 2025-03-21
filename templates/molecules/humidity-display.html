@@ -1,0 +1,10 @@
+<div class="{{ humidityClass }}">
+	<h1>Humidity</h1>
+	{% set rangeId = "humidity" %}
+	{% set rangeClass = "gauge" %}
+	{% set rangeMinValue = "0" %}
+	{% set rangeMaxValue = "100" %}
+	{% set rangeValue = "0" %}
+	{% include "atoms/range.html" %}
+	<p><span id="{{ humidityValue }}">--</span>%</p>
+</div>

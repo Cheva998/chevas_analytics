@@ -9,14 +9,11 @@
 <div class="display">
 	<h1>Temperature: <span id="temperature">--</span>°C</h1>
 </div>
-<div class="display">
-	<h1>Humidity</h1>
-	<input type="range" id="humidity" class="gauge" min="0" max="100" value="0" disabled>
-	<p><span id="humidityValue">--</span>%</p>
-</div>
+{% set humidityClass = "display" %}
+{% set humidityValue = "humidityValue" %}
+{% include "molecules/humidity-display.html" %}
 <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.0.1/socket.io.js"></script>
 <script>
-	// const apiUrl = "192.168.80.17:5000/api/sensor_data";
 	const apiUrl = "api/sensor_data";
 
 	document.addEventListener('DOMContentLoaded', function() {
@@ -46,18 +43,6 @@
 
 	async function fetchIotData() {
 		try {
-			// const tempResponse = await fetch(apiUrl + '?sensor_type=temperature');
-			// const tempData = await tempResponse.json();
-			// const temperature = tempData.temperature;
-			// document.getElementById('temperature').textContent = temperature;
-			
-
-			// const humResponse = await fetch(apiUrl + '?sensor_type=humidity');
-			// const humData = await humResponse.json();
-			// const humidity = humData.humidity;
-			// document.getElementById('humidity').value = humidity;
-			// document.getElementById('humidityValue').textContent = humidity;
-
 			const [tempData, humData] = await Promise.all([
 				fetchSensorData('temperature'),
 				fetchSensorData('humidity')
@@ -77,7 +62,6 @@
 		}
 	}
 
-	// let temperature = 22; // Example temperature value
 	let humidity = 50; // Example humidity value
 
 	//window.onload = fetchIotData;
