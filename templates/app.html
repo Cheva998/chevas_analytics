@@ -13,5 +13,5 @@
 {% set humidityValue = "humidityValue" %}
 {% include "organisms/humidity-display.html" %}
 <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.0.1/socket.io.js"></script>
-<script type="module" src="{{ url_for('static', filename='src/fetch-data.js') }}"></script>
+<script type="module" src="{{ url_for('static', filename='src/fetch-websocket.js') }}"></script>
 {% endblock %}
