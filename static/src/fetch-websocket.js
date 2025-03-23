@@ -6,7 +6,6 @@ document.addEventListener('DOMContentLoaded', function() {
     socket.on('value_update', function(data) {
         
         document.getElementById('temperature').textContent = data.temperature;
-        document.getElementById('humidity').value = data.humidity;
         document.getElementById('humidityValue').textContent = data.humidity;
         moveGauge(data.humidity);
     })

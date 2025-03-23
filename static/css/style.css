@@ -67,3 +67,8 @@ body {
     width: 150px;
     height: 150px;
 }
+.cards {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center
+}
