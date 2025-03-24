@@ -6,14 +6,7 @@
 <h1>Monitor devices</h1>
 <p>You can check the measured variables in this section.</p>
 
-<div class="cards">
-	<div class="display">
-		<h1>Temperature:<br> <span id="temperature">--</span>°C</h1>
-	</div>
-	{% set humidityClass = "display" %}
-	{% set humidityValue = "humidityValue" %}
-	{% include "organisms/humidity-display.html" %}
-</div>
+{% include "organisms/info-cards.html" %}
 <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.0.1/socket.io.js"></script>
 <script type="module" src="{{ url_for('static', filename='src/fetch-websocket.js') }}"></script>
 {% endblock %}
