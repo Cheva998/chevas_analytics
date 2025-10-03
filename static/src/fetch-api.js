@@ -1,3 +1,5 @@
+// This file does not execute, is an example only
+
 const apiUrl = "api/sensor_data";
 
 async function fetchSensorData(sensorType) {
@@ -24,6 +26,7 @@ async function fetchIotData() {
         
         if (tempData) {
             document.getElementById('temperature').textContent = tempData.temperature;
+            animateThermometer(tempData.temperature);
         }
         
         if (humData) {

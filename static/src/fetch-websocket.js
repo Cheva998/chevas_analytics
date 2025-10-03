@@ -1,4 +1,5 @@
 import { moveGauge } from './gauge-script.js';
+import { animateThermometer } from './thermometer-script.js';
 
 document.addEventListener('DOMContentLoaded', function() {
     var socket = io();
@@ -8,5 +9,6 @@ document.addEventListener('DOMContentLoaded', function() {
         document.getElementById('temperature').textContent = data.temperature;
         document.getElementById('humidityValue').textContent = data.humidity;
         moveGauge(data.humidity);
+        animateThermometer(data.temperature);
     })
 })
