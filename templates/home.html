@@ -3,6 +3,8 @@
 {% block title %}Home | Cheva's{% endblock %}
 
 {% block content %}
-<h1>Welcome to Cheva's Analytics!</h1>
-<p>Monitor, analyze and control devices and appliances.</p>
+    {% include "organisms/hero.html" %}
+    {% include "organisms/profile-overview.html" %}
+    {% include "organisms/tech-stack.html" %}
+    {% include "organisms/engineering-summary.html" %}
 {% endblock %}

@@ -1,0 +1,24 @@
+<section class="hero">
+    {% set level = 1 %}
+    {% set text="Software Engineer - Backend, Cloud, Data" %}
+    {% include "atoms/heading.html" %}
+
+    <p class="hero-subtitle">
+        This website is a technical portfolio created to showcase my experience,
+        and the technologies I work with. It complements my
+        resume by providing context, structure, and real examples.
+    </p>
+
+    {% set text = "Backend Engineer" %}
+    {% set badge_icon = "atoms/icons/code.svg" %}
+    {% include "atoms/badge.html" %}
+
+    {% set text = "AWS Certified Developer" %}
+    {% set badge_icon = "atoms/icons/cloud.svg" %}
+    {% include "atoms/badge.html" %}
+    
+    {% set text = "Data & ML Foundations" %}
+    {% set badge_icon = "atoms/icons/architecture.svg" %}
+    {% include "atoms/badge.html" %}
+    
+</section>

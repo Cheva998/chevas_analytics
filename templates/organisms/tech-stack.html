@@ -1,0 +1,39 @@
+<section id="tech" class="tech-stack">
+    <p>
+        The following technologies reflect tools I have used in professional,
+        academic, and personal projects. The goal is to show practical exposure
+        rather than an exhaustive list.
+    </p>
+
+    <div class="tech-grid">
+        {% set title="Languages" %}
+        {% set items=['Python', 'Typescript', 'C++'] %}
+        {% set icon="atoms/icons/code.svg" %}
+        {% include "molecules/tech-card.html" %}
+
+        {% set title="Databases" %}
+        {% set items=["PostgreSQL", "MySQL", "SQL Server", "MongoDB", "DynamoDB"] %}
+        {% set icon="atoms/icons/database.svg" %}
+        {% include "molecules/tech-card.html" %}
+        
+        {% set title="Cloud & DevOps" %}
+        {% set items=["AWS", "CDK (IaC)", "Docker", "Azure DevOps"] %}
+        {% set icon="atoms/icons/cloud.svg" %}
+        {% include "molecules/tech-card.html" %}
+
+        {% set title="APIs" %}
+        {% set items=["REST", "GraphQL", "WebSockets"] %}
+        {% set icon="atoms/icons/API.svg" %}
+        {% include "molecules/tech-card.html" %}
+
+        {% set title="Architecture" %}
+        {% set items=["Microservices", "Serverless"] %}
+        {% set icon="atoms/icons/architecture.svg" %}
+        {% include "molecules/tech-card.html" %}
+
+        {% set title="Data & ML" %}
+        {% set items=["TensorFlow", "Spark", "Pandas", "Scikit Learn"] %}
+        {% set icon="atoms/icons/data.svg" %}
+        {% include "molecules/tech-card.html" %}
+    </div>
+</section>

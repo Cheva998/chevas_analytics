@@ -1,0 +1,17 @@
+<div class="tech-card">
+    <div class="tech-card-header">
+        <div class="tech-icon">
+            {% if icon %}
+                {% include icon %}
+            {% endif %}
+        </div>
+        <h4>{{ title }}</h4>
+    </div>
+    
+    <div class="badges">
+        {% for item in items %}
+            {% set text = item %}
+            {% include "atoms/badge.html" %}
+        {% endfor %}
+    </div>
+</div>

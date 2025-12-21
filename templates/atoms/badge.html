@@ -1,0 +1,8 @@
+<span class="badge {{ variant | default('default')}}">
+    {% if badge_icon %}
+        <span class="badge-icon">
+            {% include badge_icon %}
+        </span>
+    {% endif %}
+    <span class="badge-text">{{ text }}</span>
+</span>
