@@ -1,0 +1,11 @@
+<div class="grid {{ grid_variant | default('default') }} ">
+	{% for card in card_data %}
+		{% set title_tech_card = card.get("title", False) %}
+		{% set description_tech_card = card.get("description", False) %}
+		{% set items_tech_card = card.get("items", False) %}
+		{% set icon_tech_card = card.get("icon", False) %}
+
+		{% include "molecules/tech-card.html" %}
+	{% endfor %}
+</div>
+	

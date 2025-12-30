@@ -1,0 +1,9 @@
+<h2>{{ title_tit_desc }}</h2>
+{% if accent_tit_desc %}
+	<span class="section-accent"></span>
+{% endif %}
+{% if description_tit_desc %}
+	{% for paragraph in description_tit_desc %}
+		<p>{{ paragraph }}</p>
+	{% endfor %}
+{% endif %}

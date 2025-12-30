@@ -1,31 +1,37 @@
 <section class="profile-overview section section--light">
-	<h2>Professional Focus</h2>
+	{% set title_tit_desc = "Professional Focus" %}
+    {% set accent_tit_desc = True %}
+    {% include "molecules/title-description.html" %}
 
-	<span class="section-accent"></span>
-
-	<div class="profile-grid">
-		{% set title = "Backend Engineering" %}
-		{% set description = "Primary focus on building APIs and backend services, 
-		emphasizing clean architecture, maintainability, and production readiness." %}
-		{% set items=["API Design & Integration", "ETLs & Data Pipelines", "Task & Workflow Orchestration"] %}
-		{% include "molecules/profile-card.html" %}
-
-		{% set title = "Cloud & Infrastructure" %}
-		{% set description = "Experience deploying and maintaining cloud-native 
-		systems using infrastructure as code and serverless architectures." %}
-		{% set items  = ["Cloud-Native Architectures", "Infrastructure as Code", "Serverless Systems", "Containerized Workloads"] %}
-		{% include "molecules/profile-card.html" %}
-
-		{% set title = "Data & Machine Learning" %}
-		{% set description = "Academic and practical background in data science, with 
-		exposure to machine learning models and analytical workflows." %}
-		{% set items  = ["Supervised Models", "Unsupervised Models", "Deep Learning", "Data Analysis"] %}
-		{% include "molecules/profile-card.html" %}
-
-		{% set title = "Frontend Foundations" %}
-		{% set description = "Comfortable working across the stack, creating functional and maintainable interfaces that integrate cleanly with backend systems." %}
-		{% set items  = ["Component-based Design", "UI State & Interaction", "Backend–Frontend Integration"] %}
-		{% include "molecules/profile-card.html" %}
-	</div>
-
+	{% set grid_variant = "profile-grid" %}
+	{% set card_data = [
+        {
+			"title": "Backend Engineering",
+			"description": "Primary focus on building APIs and backend services, 
+			emphasizing clean architecture, maintainability, and production readiness.",
+			"items": ["API Design & Integration", "ETLs & Data Pipelines", "Task & Workflow Orchestration"]
+        },
+		{
+			"title": "Cloud & Infrastructure",
+			"description": "Experience deploying and maintaining cloud-native 
+			systems using infrastructure as code and serverless architectures.",
+			"items": ["Cloud-Native Architectures", "Infrastructure as Code", "Serverless Systems", "Containerized Workloads"]
+		},
+		{
+			"title": "Data & Machine Learning",
+			"description": "Academic and practical background in data science, with 
+			exposure to machine learning models and analytical workflows.",
+			"items": ["Cloud-Native Architectures", "Infrastructure as Code", 
+			"Serverless Systems", "Containerized Workloads"]
+		},
+		{
+			"title": "Frontend Foundations",
+			"description": "Comfortable working across the stack, creating functional
+			and maintainable interfaces that integrate cleanly with backend systems.",
+			"items": ["Component-based Design", "UI State & Interaction", 
+			"Backend–Frontend Integration"]
+		}
+	]
+	%}
+	{% include "organisms/tech-grid.html" %}
 </section>

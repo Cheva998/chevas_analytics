@@ -1,16 +1,19 @@
-<div class="tech-card">
+<div class="tech-card {{ card_variant | default('default') }} ">
     <div class="tech-card-header">
-        <div class="tech-icon">
-            {% if icon %}
-                {% include icon %}
-            {% endif %}
-        </div>
-        <h4>{{ title }}</h4>
+        {% if icon_tech_card %}
+            <div class="tech-icon">
+                {% include icon_tech_card %}
+            </div>
+        {% endif %}
+        <h3>{{ title_tech_card }}</h3>
+        {% if description_tech_card %}
+            <p>{{description_tech_card}}</p>
+        {% endif %}
     </div>
     
     <div class="badges">
-        {% for item in items %}
-            {% set text = item %}
+        {% for item in items_tech_card %}
+            {% set text_badge = item %}
             {% include "atoms/badge.html" %}
         {% endfor %}
     </div>

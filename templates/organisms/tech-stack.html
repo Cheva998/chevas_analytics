@@ -1,41 +1,46 @@
 <section id="tech" class="tech-stack section section--white">
-    <h2>Tech Stack</h2>
+    {% set title_tit_desc = "Tech Stack" %}
+    {% set accent_tit_desc = True %}
+    {% set description_tit_desc = ["The following technologies reflect tools I have used 
+        in professional, academic, and personal projects. The goal is to show 
+        practical exposure rather than an exhaustive list."] %}
+    {% include "molecules/title-description.html" %}
     
-    <p>
-        The following technologies reflect tools I have used in professional,
-        academic, and personal projects. The goal is to show practical exposure
-        rather than an exhaustive list.
-    </p>
+    {% set grid_variant = "tech-grid" %}
+    {% set card_data = [
+        {
+        "title": "Languages",
+        "items": ['Python', 'Typescript', 'C++'],
+        "icon": "atoms/icons/code.svg"
+        },
+        {
+        "title": "Databases",
+        "items": ["PostgreSQL", "MySQL", "SQL Server", "MongoDB", "DynamoDB"],
+        "icon": "atoms/icons/database.svg"
+        },
+        {
+        "title": "Cloud & DevOps",
+        "items": ["AWS", "CDK (IaC)", "Docker", "Azure DevOps"],
+        "icon": "atoms/icons/cloud.svg"
+        },
+        {
+        "title": "APIs",
+        "items": ["REST", "GraphQL", "WebSockets"],
+        "icon": "atoms/icons/API.svg"
+        },
+        {
+        "title": "Architecture",
+        "items": ["Microservices", "Serverless"],
+        "icon": "atoms/icons/architecture.svg"
+        },
+        {
+        "title": "Data & ML",
+        "items": ["TensorFlow", "Spark", "Pandas", "Scikit Learn"],
+        "icon": "atoms/icons/data.svg"
+        }
+    ]
+    %}
+    {% include "organisms/tech-grid.html" %}
 
-    <div class="tech-grid">
-        {% set title="Languages" %}
-        {% set items=['Python', 'Typescript', 'C++'] %}
-        {% set icon="atoms/icons/code.svg" %}
-        {% include "molecules/tech-card.html" %}
 
-        {% set title="Databases" %}
-        {% set items=["PostgreSQL", "MySQL", "SQL Server", "MongoDB", "DynamoDB"] %}
-        {% set icon="atoms/icons/database.svg" %}
-        {% include "molecules/tech-card.html" %}
-        
-        {% set title="Cloud & DevOps" %}
-        {% set items=["AWS", "CDK (IaC)", "Docker", "Azure DevOps"] %}
-        {% set icon="atoms/icons/cloud.svg" %}
-        {% include "molecules/tech-card.html" %}
-
-        {% set title="APIs" %}
-        {% set items=["REST", "GraphQL", "WebSockets"] %}
-        {% set icon="atoms/icons/API.svg" %}
-        {% include "molecules/tech-card.html" %}
-
-        {% set title="Architecture" %}
-        {% set items=["Microservices", "Serverless"] %}
-        {% set icon="atoms/icons/architecture.svg" %}
-        {% include "molecules/tech-card.html" %}
-
-        {% set title="Data & ML" %}
-        {% set items=["TensorFlow", "Spark", "Pandas", "Scikit Learn"] %}
-        {% set icon="atoms/icons/data.svg" %}
-        {% include "molecules/tech-card.html" %}
-    </div>
 </section>
