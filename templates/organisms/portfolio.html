@@ -1,0 +1,54 @@
+<section id="portfolio" class="portfolio section section--light">
+	{% set title_tit_desc = "Portfolio" %}
+    {% set accent_tit_desc = True %}
+    {% set description_tit_desc = ["A selection of professional projects 
+	that demonstrate how I design, build, and operate backend and cloud-based 
+	systems in real-world scenarios."] %}
+    {% include "molecules/title-description.html" %}
+
+	{% set grid_variant = "profile-grid" %}
+	{% set card_data = [
+        {
+			"title": "Workflow & ETL Service",
+			"description": "Serverless ETL platform for orchestrating data 
+			pipelines and scheduled workflows across heterogeneous relational 
+			databases using AWS Glue, PySpark, and Step Functions. Processes 
+			5+ million rows per day, standardizing schemas and delivering 
+			analytics-ready data to PostgreSQL while reducing compliance risk 
+			and cutting processing time by ~70%.",
+			"items": ["AWS Glue", "PySpark", "Step Functions", "SQL Server", 
+			"PostgreSQL", "MySQL"]
+        },
+		{
+			"title": "Complaints Management API",
+			"description": "Serverless REST API powering a complaints-management 
+			platform, built with AWS Lambda and API Gateway. Designed backend 
+			services and REST endpoints with well-defined data contracts, 
+			enabling reliable integration with frontend clients and consistent 
+			request/response semantics across user-facing workflows.",
+			"items": ["AWS Lambda", "API Gateway", "REST APIs", "Python"]
+		},
+		{
+			"title": "Infrastructure Orchestration Platform",
+			"description": "Cloud infrastructure orchestration system built 
+			with AWS CDK (TypeScript), automating the provisioning of 15+ AWS 
+			services. Contributed to the implementation and maintenance of 
+			infrastructure code, supporting repeatable deployments and 
+			consistent environment configuration across multiple workloads.",
+			"items": ["AWS CDK", "TypeScript", "Infrastructure as Code (IaC)",]
+		},
+		{
+			"title": "Content Recommendation Platform",
+			"description": "Data-driven content recommendation platform using 
+			a large language model to analyze patent, papers and news data and 
+			generate recommendations exposed through a backend API. Contributed 
+			to data processing pipelines and API design while aligning technical 
+			implementation with business requirements. Reduced manual research 
+			time by ~60% and supported on-premise deployment of the system.",
+			"items": ["Python", "LLM Integration", "REST APIs", "Data Processing", 
+			"On-Premise Deployment"]
+		}
+	]
+	%}
+	{% include "organisms/tech-grid.html" %}
+</section>
